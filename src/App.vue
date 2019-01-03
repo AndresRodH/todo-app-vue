@@ -14,9 +14,17 @@
               outline
               clearable
             ></v-text-field>
-            <ul v-for="todo in todos" :key="todo.id">
-              <li>{{ todo.text }}</li>
-            </ul>
+            <v-card>
+              <v-list v-if="todos.length > 0">
+                <template v-for="todo in todos">
+                  <v-list-tile :key="todo.text">{{ todo.text }}</v-list-tile>
+                  <v-divider
+                    :key="todo.id"
+                    v-if="todo.id !== todos.length - 1"
+                  />
+                </template>
+              </v-list>
+            </v-card>
           </v-flex>
         </v-layout>
       </v-container>
@@ -38,21 +46,29 @@ export default class App extends Vue {
   @Model('input', { type: String, default: '' }) todoInput!: string
 
   private todos: Todo[] = []
-  private newTodo: string = `${this.todoInput}`
+  private newTodo: string = this.todoInput.slice()
 
   @Emit()
   addTodo() {
     const value = this.newTodo && this.newTodo.trim()
 
+    // skip if no text
     if (!value) {
       return
     }
+
     this.todos.push({
       id: this.todos.length,
       text: value,
       isCompleted: false,
     })
 
+    // clear input value
+    this.clearTodoInput()
+  }
+
+  @Emit()
+  clearTodoInput() {
     this.newTodo = ''
   }
 }
