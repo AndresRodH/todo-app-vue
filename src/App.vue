@@ -1,36 +1,27 @@
 <template>
-  <v-app>
-    <v-toolbar app>
-      <v-toolbar-title class="headline text-uppercase">
-        <span>Vuetify</span>
-        <span class="font-weight-light">MATERIAL DESIGN</span>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn
-        flat
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-      >
-        <span class="mr-2">Latest Release</span>
-      </v-btn>
+  <v-app id="inspire">
+    <v-toolbar color="teal" dark fixed app>
+      <v-toolbar-title>Todo App</v-toolbar-title>
     </v-toolbar>
-
-    <v-content> <HelloWorld /> </v-content>
+    <v-content>
+      <v-container fluid fill-height>
+        <v-layout justify-center align-center>
+          <v-flex xs12 sm6>
+            <v-text-field
+              v-model="newTodo"
+              label="Add a todo"
+              outline
+              clearable
+            ></v-text-field>
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </v-content>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
-
 export default {
   name: 'App',
-  components: {
-    HelloWorld,
-  },
-  data() {
-    return {
-      //
-    };
-  },
 };
 </script>
