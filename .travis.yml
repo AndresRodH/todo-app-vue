@@ -7,5 +7,5 @@ before_deploy: "echo 'Deploying app...'"
 deploy:
   provider: firebase
   token:
-    secure: 'YOUR ENCRYPTED token'
+    secure: 'Wn8LVoNOIKIeuAt1RFH5ry9A1Lzo0uuGzYjZ9Bn4GOzfAkwvTUAnxbUTEWffNV4/jLri9R34+oCmLDzPZlke/tCUbPD26iB6dMeSjLgoOimDPmaoS6iUOKmS6+hjnvlrdlGT2kJplPjrkc3OVEdZnCqOY5HHnWXvbdDHON/vUGqOSXIVkJyHMz5TZKZYPCqJPN9ZnnYNo8VFhTB2/WkFVaDwgjl2Ui1fHx10HPXVTaBAZp9LTwRkkt0CV5Mt9fTvBqEfhL7Z0ONB0Em97BFvaQceInRTPJPVQC/4TUQoJuGfv7qfCnb4LiOTgbaqB0qwIX71o9ziojoeZq8iUPvwleHhHEp+YFuVNTPbHv3rIU6+kKhfZ0EBvxSB8Y31nDhDTkzlCVaAhChPbloTVh65MOOOc/fB5aVwo+MRfb/3SpJx1lBEcIUPFF7+aRahMKEyZixsjoWjJ+9tMYuenDIaDn+Wr9ffJeOx7ji0Pnw4DoStWLiIBwUFuKna4Cnw/Y5qa654uiEl6d9qHJ1n08n1aSA8kygtTQ8dHkSiR4dJH/xvl7IN/aMV4Kh0SemyKkLERMAJOPWZZSDn+4aRUfCJERDPNyAk6nMl8vyFO9GM0vIYeWaod+uRE+DD0jV9kF/YlunVwJGqvLAh2em+Zp8SwnvCBe1MiDiIoLXP3TN7Fwc='
 after_deploy: "echo 'App deployed'"
