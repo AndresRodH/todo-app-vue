@@ -17,7 +17,12 @@
             <v-card>
               <v-list v-if="todos.length > 0">
                 <template v-for="todo in todos">
-                  <v-list-tile :key="todo.text">{{ todo.text }}</v-list-tile>
+                  <v-list-tile :key="todo.text">
+                    <v-list-tile-action @click.prevent>
+                      <v-checkbox v-model="todo.isCompleted" />
+                    </v-list-tile-action>
+                    <v-list-tile-content>{{ todo.text }}</v-list-tile-content>
+                  </v-list-tile>
                   <v-divider
                     :key="todo.id"
                     v-if="todo.id !== todos.length - 1"
@@ -46,7 +51,7 @@ export default class App extends Vue {
   @Model('input', { type: String, default: '' }) todoInput!: string
 
   private todos: Todo[] = []
-  private newTodo: string = this.todoInput.slice()
+  private newTodo: string = Object.assign('', this.todoInput)
 
   @Emit()
   addTodo() {
