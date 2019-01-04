@@ -25,11 +25,12 @@
                       <v-checkbox v-model="todo.isCompleted" />
                     </v-list-tile-action>
                     <v-list-tile-content>{{ todo.text }}</v-list-tile-content>
+                    <v-list-tile-action>
+                      <v-btn @click="removeTodo(todo)" icon>
+                        <v-icon color="red lighten-1">delete</v-icon>
+                      </v-btn>
+                    </v-list-tile-action>
                   </v-list-tile>
-                  <v-divider
-                    :key="todo.id"
-                    v-if="todo.id !== todos.length - 1"
-                  />
                 </template>
               </v-list>
             </v-card>
@@ -76,6 +77,11 @@ export default class App extends Vue {
 
     // clear input value
     this.clearTodoInput()
+  }
+
+  @Emit()
+  removeTodo(todo: Todo) {
+    this.todos.splice(this.todos.indexOf(todo), 1)
   }
 
   @Emit()
