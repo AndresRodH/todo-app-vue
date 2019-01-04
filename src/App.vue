@@ -1,5 +1,5 @@
 <template>
-  <v-app id="inspire">
+  <v-app>
     <v-toolbar color="teal" dark fixed app>
       <v-toolbar-title>Todo App</v-toolbar-title>
     </v-toolbar>
@@ -13,6 +13,9 @@
               label="Add a todo"
               outline
               clearable
+              counter
+              :rules="[rules.counter]"
+              maxlength="140"
             ></v-text-field>
             <v-card>
               <v-list v-if="todos.length > 0">
@@ -52,6 +55,9 @@ export default class App extends Vue {
 
   private todos: Todo[] = []
   private newTodo: string = Object.assign('', this.todoInput)
+  private rules: any = {
+    counter: (value: string) => value.length <= 140 || 'Max 140 characters',
+  }
 
   @Emit()
   addTodo() {
