@@ -10,7 +10,7 @@ deploy:
   provider: script
   skip_cleanup: true
   script:
-    firebase deploy --project todo-vue-app --message "https://travis-ci.com/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID"
+    firebase deploy --only hosting --project todo-vue-app --message "https://travis-ci.com/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID"
     --token $FIREBASE_TOKEN --non-interactive --force
   on:
     branch: master
