@@ -13,12 +13,14 @@
         </v-layout>
       </v-container>
     </v-content>
+    <Footer />
   </v-app>
 </template>
 
 <script lang="ts">
 import { Component, Vue, Model, Prop, Emit } from 'vue-property-decorator'
 import AddTodo from '@/components/AddTodo.vue'
+import Footer from '@/components/Footer.vue'
 import TodoList from '@/components/TodoList'
 import { db } from '@/main'
 
@@ -36,6 +38,7 @@ export interface Todo {
   components: {
     AddTodo,
     TodoList,
+    Footer,
   },
 })
 export default class App extends Vue {}
