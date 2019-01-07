@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/AndresRodH/todo-app-vue.svg?branch=master)](https://travis-ci.com/AndresRodH/todo-app-vue)
+
 # 👨🏻‍🏭 WIP Todo App
 
 ## Project setup
