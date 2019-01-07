@@ -5,8 +5,11 @@ env:
     - secure: 0x64H6C5xtLpiTcYdFH8LJ/q2V/ceuOqGtmh4WVqqLIBU6SmfVNAb46oghxyKYafOauYNoiVuy5593RKGE1OjePF4WpvHrD1XR5k7G7Rlf0evImtPVddKNltQbO2VJxotKVk60DxV7pfRFKGJp60uFyelDHSAYIrC6yTScrjRbo+eZVdFJWMpQgY9sxLfVBNkRoGRLPvRT7uk1od14P97sHUx0aJ1amztgu1pD3ib1vXGfjCXm0kBYD+14myH2miYn+wzZUTjlxYfeDmi0vUk53yWsvW6Zd5t6LFMEYqqNiPJu5ZObXKXaljhK1lPv4iXVJDVgck8FdAkBKX0P3sI2Bo5cumXAbMC+4Cgfg3qHsWU5W117ujLcjgSlVngoWq+/ljc/iehKH/pm4TwOPPrWy7SwcDzy21GmkDPURdKHNW2ioQwb6FsxccDgfiiDY+gOR15kdtRluJFFaPN5uGfEewBDYBxnF7r7LCUPYJ1x0OxOcGaCKecNAKtec1koiORZijcYB/KbzU9IqHNgBGzrRL0AZVLjCqmyWbqyz1H7+3+5g0AvCjQar4jhUfDjz8ayFcDgmHEGt0mnVy0EDCG2EemBPksYtp+MMxZFod1x8unYfPOwE3YLYyEStoYDDMRDZz24XYD8Gxq6/AvGpWlXfRfqkYIT4j78XqHowshpA=
 before_deploy: echo 'Deploying app...'
 deploy:
-  provider: firebase
-  edge: true
-  token:
-    secure: 0x64H6C5xtLpiTcYdFH8LJ/q2V/ceuOqGtmh4WVqqLIBU6SmfVNAb46oghxyKYafOauYNoiVuy5593RKGE1OjePF4WpvHrD1XR5k7G7Rlf0evImtPVddKNltQbO2VJxotKVk60DxV7pfRFKGJp60uFyelDHSAYIrC6yTScrjRbo+eZVdFJWMpQgY9sxLfVBNkRoGRLPvRT7uk1od14P97sHUx0aJ1amztgu1pD3ib1vXGfjCXm0kBYD+14myH2miYn+wzZUTjlxYfeDmi0vUk53yWsvW6Zd5t6LFMEYqqNiPJu5ZObXKXaljhK1lPv4iXVJDVgck8FdAkBKX0P3sI2Bo5cumXAbMC+4Cgfg3qHsWU5W117ujLcjgSlVngoWq+/ljc/iehKH/pm4TwOPPrWy7SwcDzy21GmkDPURdKHNW2ioQwb6FsxccDgfiiDY+gOR15kdtRluJFFaPN5uGfEewBDYBxnF7r7LCUPYJ1x0OxOcGaCKecNAKtec1koiORZijcYB/KbzU9IqHNgBGzrRL0AZVLjCqmyWbqyz1H7+3+5g0AvCjQar4jhUfDjz8ayFcDgmHEGt0mnVy0EDCG2EemBPksYtp+MMxZFod1x8unYfPOwE3YLYyEStoYDDMRDZz24XYD8Gxq6/AvGpWlXfRfqkYIT4j78XqHowshpA=
+  provider: script
+  skip_cleanup: true
+  script:
+    $(npm bin -g)/firebase deploy --project todo-vue-app --message "https://travis-ci.com/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID"
+    --token $FIREBASE_TOKEN --non-interactive --force
+  on:
+    branch: firebase-hosting
 after_deploy: echo 'App deployed'
