@@ -30,6 +30,12 @@ export interface Todo {
   isCompleted: boolean
 }
 
+enum VisibilityFilter {
+  ALL,
+  COMPLETED,
+  REMAINING,
+}
+
 @Component({
   data: () => ({ todos: [] }),
   firestore: () => ({
@@ -41,5 +47,7 @@ export interface Todo {
     Footer,
   },
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  private visibilityFilter = VisibilityFilter.ALL
+}
 </script>

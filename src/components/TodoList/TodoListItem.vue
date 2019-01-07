@@ -13,12 +13,12 @@
       </v-btn>
     </v-list-tile-action>
     <v-list-tile-content>
-      <span :class="{ completed: todoItem.isCompleted }">{{
-        todoItem.text
-      }}</span>
+      <span :class="{ completed: todoItem.isCompleted }">
+        {{ todoItem.text }}
+      </span>
     </v-list-tile-content>
-    <v-list-tile-action>
-      <v-btn @click="removeTodo(todoItem.id)" icon>
+    <v-list-tile-action v-if="todoItem.isCompleted">
+      <v-btn @click="clearTodo(todoItem.id)" icon>
         <v-icon color="red lighten-1">delete</v-icon>
       </v-btn>
     </v-list-tile-action>
@@ -56,7 +56,7 @@ export default class TodoListItem extends Vue {
   }
 
   @Emit()
-  removeTodo(id: string) {
+  clearTodo(id: string) {
     this.Todos.doc(id).delete()
   }
 }
