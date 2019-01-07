@@ -19,6 +19,6 @@ import TodoListItem from './TodoListItem.vue'
   },
 })
 export default class TodoList extends Vue {
-  @Prop() todos: Todo[] = []
+  @Prop({ required: true }) todos!: Todo[]
 }
 </script>
