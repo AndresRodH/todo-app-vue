@@ -13,9 +13,9 @@
       </v-btn>
     </v-list-tile-action>
     <v-list-tile-content>
-      <span :class="{ completed: todoItem.isCompleted }">
-        {{ todoItem.text }}
-      </span>
+      <span :class="{ completed: todoItem.isCompleted }">{{
+        todoItem.text
+      }}</span>
     </v-list-tile-content>
     <v-list-tile-action v-if="todoItem.isCompleted">
       <v-btn @click="clearTodo(todoItem.id)" icon>
@@ -38,6 +38,14 @@ export default class TodoListItem extends Vue {
   private todoItem: Todo = Object.assign('', this.todo)
   private loading: boolean = false
   private color: string = this.todoItem.isCompleted ? 'green' : 'gray'
+
+  created() {
+    // subscribe to updates on this todo
+    this.Todos.doc(this.todoItem.id).onSnapshot(snap => {
+      const updatedTodo: Todo = snap.data() as Todo
+      this.todoItem = updatedTodo
+    })
+  }
 
   @Emit()
   async toggleTodo() {
