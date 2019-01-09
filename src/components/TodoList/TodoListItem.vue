@@ -13,9 +13,9 @@
       </v-btn>
     </v-list-tile-action>
     <v-list-tile-content>
-      <span :class="{ completed: todoItem.isCompleted }">{{
-        todoItem.text
-      }}</span>
+      <span :class="{ completed: todoItem.isCompleted }">
+        {{ todoItem.text }}
+      </span>
     </v-list-tile-content>
     <v-list-tile-action v-if="todoItem.isCompleted">
       <v-btn @click="clearTodo(todoItem.id)" icon>
@@ -28,7 +28,7 @@
 <script lang="ts">
 import { Component, Vue, Prop, Emit } from 'vue-property-decorator'
 import { Todo } from '@/App.vue'
-import { db } from '@/main'
+import { db } from '@/firebase'
 
 @Component
 export default class TodoListItem extends Vue {

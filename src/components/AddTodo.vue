@@ -15,7 +15,7 @@
 
 <script lang="ts">
 import { Component, Vue, Model, Emit } from 'vue-property-decorator'
-import { db } from '@/main'
+import { db } from '@/firebase'
 
 interface Todo {
   id: string

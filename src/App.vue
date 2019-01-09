@@ -22,7 +22,7 @@ import { Component, Vue, Model, Prop, Emit } from 'vue-property-decorator'
 import AddTodo from '@/components/AddTodo.vue'
 import Footer from '@/components/Footer.vue'
 import TodoList from '@/components/TodoList'
-import { db } from '@/main'
+import { db } from '@/firebase'
 
 export interface Todo {
   id: string
